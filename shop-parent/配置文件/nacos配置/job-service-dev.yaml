@@ -1,0 +1,23 @@
+server:
+  port: 8081
+feign:
+  sentinel:
+    enabled: true
+ribbon:
+  eager-load:
+    enabled: true
+  ReadTimeout: 10000            
+  ConnectTimeout: 10000          
+  MaxAutoRetries: 0             
+  MaxAutoRetriesNextServer: 0  
+elasticjob:
+  zookeeper-url: 127.0.0.1:2181
+  group-name: shop-job-group
+job:
+  seckillProduct:
+    cron: 0 * * * * ?
+    shardingCount: 3
+    shardingParameters: 0=10,1=12,2=14
+    dataFlow: false
+  userCache:
+    cron: 0 0 0 * * ?
